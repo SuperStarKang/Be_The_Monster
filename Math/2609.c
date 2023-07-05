@@ -36,8 +36,7 @@ int find_lcm(int N, int M, int gcd)
 }
 
 int main() {
-	int N,M;
-	int lcm,gcd;
+	int N,M,lcm,gcd;
 
 	scanf("%d %d", &N, &M);
 
