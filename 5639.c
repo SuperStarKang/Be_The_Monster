@@ -2,7 +2,7 @@
 
 int node[10001];
 
-void	post(int start, int end) {
+void	post_order(int start, int end) {
     if (start >= end)
 		return;
 
@@ -15,15 +15,16 @@ void	post(int start, int end) {
         middle++;
     }
 
-    post(start+1,middle);
-    post(middle,end);
+    post_order(start+1,middle);
+    post_order(middle,end);
     printf("%d\n", root);
 }
 
 int main(void) {
     int key;
     int idx = 0;
-    while(!(scanf("%d", &key) == EOF))
+
+    while (!(scanf("%d", &key) == EOF))
 		node[idx++] = key;
-    post(0,idx);
+    post_order(0,idx);
 }
