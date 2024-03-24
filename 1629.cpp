@@ -36,48 +36,20 @@
 // 	return 0;
 // }
 
-// long long	moduler2(long long a, long long b, long long c) {
-// 	int power[32];
-// 	int tmp = b;
-// 	int i=0;
-
-// 	for (i=0; tmp>0; i++) {
-// 		power[i] = tmp%2;
-// 		tmp /= 2;
-// 	}
-// 	i--;
-// 	tmp = a;
-// 	int n=1;
-// 	for (int j=i; j>=0; j--) {
-// 		if (power[j]) {
-// 			for (int k=0; k<j; k++) {
-// 				power[j] = tmp * a;
-// 			}
-// 		}
-// 		power[j] %= c;
-// 		cout<<"j : "<<j<<" power : " <<power[j]<<endl;
-// 	}
-// 	int result = 1;
-// 	for (int j=0; j<=i; j++) {
-// 		if (power[j])
-// 			result = result * power[j] % c;
-// 	}
-// 	return result;
-// }
 
 #include <iostream>
 
 using namespace std;
 
-long long	moduler(long long a, long long b, long long c) {
+long long moduler(long long a, long long b, long long c) {
 	if (b == 0)
 		return 1;
 	if (b == 1)
 		return a%c;
-
+	
 	long long tmp = moduler(a,b/2,c) % c;
 	if (b % 2 == 0)
-		return (tmp * tmp) % c;
+		return tmp * tmp % c;
 	else
 		return tmp * tmp % c * a % c;
 }
