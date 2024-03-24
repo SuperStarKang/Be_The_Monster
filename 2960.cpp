@@ -30,13 +30,6 @@ int main(void) {
 			list[j] = 0;
 		}
 	}
-	// for (int i=0; i<=N; i++) {
-	// 	cout<<list[i]<<' ';
-	// }
-	// cout<<endl;
-	// for (int i=0; i<=N; i++) {
-	// 	cout<<ans[i]<<' ';
-	// }
 	cout<<ans[K-1]<<endl;
 	return 0;
 }
