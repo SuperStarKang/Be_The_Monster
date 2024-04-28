@@ -59,8 +59,8 @@ void dijkstra_pq() {
 		if (cost[current] < distance)
 			continue;
 		for (int i=0; i<v[current].size(); i++) {
-			int next = v[current][i].second;
-			int next_dis = distance + v[current][i].first;
+			int next = v[current][i].first;
+			int next_dis = distance + v[current][i].second;
 			if (next_dis < cost[next]) {
 				cost[next] = next_dis;
 				pq.push({-next_dis, next});
@@ -79,7 +79,7 @@ int main(void) {
 	int v1,v2,w;
 	for (int i=0; i<E; i++) {
 		cin >> v1 >> v2 >> w;
-		v[v1].push_back({w,v2});
+		v[v1].push_back({v2,w});
 	}
 	for (int i=1; i<=V; i++) {
 		cost[i] = INF;
