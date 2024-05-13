@@ -8,27 +8,19 @@ int dp[301];
 
 int main(void) {
 	int N;
-	cin>>N;
+	cin >> N;
 
-	for (int i=0; i<N; i++)
-		cin>>stair[i];
-	
-	int i=N-1;
-	int check=0;
-	while (i > 0) {
-		if (max(stair[i], stair[i-1]) == stair[i]) {
-			dp[i-1] += stair[i] + dp[i];
-			check++;
-			i--;
-		}
-		else {
-			dp[i-2] += stair[i-1] + dp[i];
-			i -= 2;
-		}
+	for (int i=1; i<=N; i++)
+		cin >> stair[i];
+
+	dp[1] = stair[1];
+	dp[2] = stair[1] + stair[2];
+	dp[3] = stair[3] + max(stair[1], stair[2]);
+
+	for (int i=4; i<=N; i++) {
+		dp[i] = stair[i] + max(stair[i-1] + dp[i-3], dp[i-2]);
 	}
-	for (int i=0; i<N; i++)
-		cout<<dp[i]<<' ';
-	cout<<endl;
-
+	
+	cout << dp[N] << endl;
 	return 0;
 }
