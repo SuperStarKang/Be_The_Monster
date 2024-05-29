@@ -9,12 +9,18 @@ int card[500001];
 vector<int> ans;
 
 int binary_search(int find) {
+	int flag=0;
+	int cnt=0;
 	int left = 0,right = N-1;
+	int mid;
+	int ll=10000001,rr=0;
 	while (left <= right) {
-		int mid = (left+right)/2;
+		mid = (left+right)/2;
 
 		if (card[mid] == find) {
-			return 1;
+			ll = min(ll,mid);
+			rr = max(rr,mid);
+			flag=1;
 		}
 
 		if (card[mid] > find) {
@@ -24,6 +30,8 @@ int binary_search(int find) {
 			left = mid + 1;
 		}
 	}
+	if (flag)
+		return rr-ll+1;
 	return 0;
 }
 
@@ -39,13 +47,8 @@ int main(void) {
 	int find;
 	for (int i=0; i<M; i++) {
 		cin >> find;
-
-		if (binary_search(find)) {
-			ans.push_back(1);
-		}
-		else {
-			ans.push_back(0);
-		}
+		// ans.push_back(binary_search(find));
+		ans.push_back(upper_bound(card,card+N,find) - lower_bound(card,card+N,find));
 	}
 
 	for (int i=0; i<ans.size(); i++) {
