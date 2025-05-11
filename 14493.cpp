@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int N,ans;
+int N;
 vector<pair<int, int>> v;
 
 int main(void) {
